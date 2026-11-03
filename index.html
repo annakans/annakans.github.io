@@ -443,8 +443,8 @@ const VIDEOS = {
     {t:"Утренняя рутина", s:"влог", src:"media/life-morning.mp4", poster:"media/life-morning.jpg"}
   ]
 };
-const PRODUCT_PHOTOS = Array.from({length: 6}, () => "");
-const UGC_PHOTOS = Array.from({length: 5}, () => "");
+const PRODUCT_PHOTOS = ["media/photo-biorepair.jpg", "media/photo-lador.jpg"];
+const UGC_PHOTOS = ["media/photo-rhode.jpg", "media/photo-tomyskin.jpg", "media/photo-sokolov.jpg"];
 /* ============================================================== */
 
 const tones = ["tone-1","tone-2","tone-3","tone-4","tone-5"];
@@ -496,6 +496,18 @@ document.querySelectorAll(".arrow").forEach(btn => btn.addEventListener("click",
   const r = document.getElementById(btn.dataset.rail);
   r.scrollBy({ left: btn.dataset.dir * r.clientWidth * 0.8, behavior: "smooth" });
 }));
+
+/* стрелки видны, только если ленту есть куда листать */
+function toggleArrows() {
+  document.querySelectorAll(".rail-wrap").forEach(w => {
+    const r = w.querySelector(".rail"); const show = r.scrollWidth > r.clientWidth + 4;
+    w.querySelectorAll(".arrow").forEach(a => a.style.visibility = show ? "" : "hidden");
+  });
+}
+toggleArrows();
+window.addEventListener("resize", toggleArrows);
+window.addEventListener("load", toggleArrows);
+tabsEl.addEventListener("click", () => requestAnimationFrame(toggleArrows));
 
 /* просмотр видео и фото */
 const viewer = document.getElementById("viewer"), box = document.getElementById("viewerBox");
