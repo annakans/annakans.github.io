@@ -414,7 +414,7 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
 
 <script>
 /* ===== Материалы сайта: сюда подставляются реальные файлы ===== */
-const PHOTOS = { hero: "media/portrait-main-2.jpg", about: "", contact: "media/portrait-contact-2.jpg" };
+const PHOTOS = { hero: "media/portrait-main-2.jpg", about: "", contact: "media/portrait-contact-3.jpg" };
 const VIDEOS = {
   "Макияж": [
     {t:"Оцениваю румяна", s:"обзор", src:"media/makeup-blush.mp4", poster:"media/makeup-blush.jpg"},
@@ -448,7 +448,7 @@ function fillPhoto(id, src, i, pos) {
   el.innerHTML = src ? `<img src="${src}" alt="Anna Kans" style="width:100%;height:100%;object-fit:cover;object-position:${pos || "50% 30%"}">` : `<div style="position:relative;width:100%;height:100%">${placeholder(i, "ваше фото")}</div>`;
 }
 fillPhoto("heroPhoto", PHOTOS.hero, 0, "50% 35%");
-fillPhoto("contactPhoto", PHOTOS.contact, 1, "50% 25%");
+fillPhoto("contactPhoto", PHOTOS.contact, 1, "40% 55%");
 
 /* вкладки портфолио */
 const tabsEl = document.getElementById("tabs");
