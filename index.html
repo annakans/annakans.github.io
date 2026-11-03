@@ -83,7 +83,8 @@ section > * { position: relative; z-index: 1; }
 .hero .wrap { display: grid; grid-template-columns: minmax(240px, 5fr) 7fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
 .portrait { aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius); overflow: hidden; box-shadow: 0 30px 60px -30px rgba(59,26,29,.45); }
 .hero h1 { font-family: var(--script); font-size: clamp(78px, 11vw, 150px); line-height: .95; color: var(--choco); }
-.hero .tagline { margin: 22px 0 32px; color: var(--choco-soft); line-height: 2; }
+.hero .wrap > * { min-width: 0; }
+.hero .tagline { white-space: nowrap; overflow: hidden; margin: 22px 0 32px; color: var(--choco-soft); line-height: 2; }
 .btns { display: flex; flex-wrap: wrap; gap: 12px; }
 .pill {
   display: inline-flex; align-items: center; gap: 10px;
@@ -269,6 +270,7 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
   .top nav a { font-size: 17px; }
   body { font-size: 18px; }
   .tabs { gap: 6px; }
+  .hero .tagline { letter-spacing: .1em; }
   .tabs .tab { padding: 9px 12px; font-size: 11px; letter-spacing: .05em; }
 }
 </style>
@@ -511,6 +513,22 @@ document.addEventListener("click", e => {
 });
 viewer.addEventListener("click", e => { if (e.target === viewer || e.target.closest(".close")) closeViewer(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeViewer(); });
+
+/* подпись под именем всегда в одну строку: при нехватке места чуть уменьшается */
+function fitTagline() {
+  const el = document.querySelector(".hero .tagline");
+  el.dataset.full = el.dataset.full || el.textContent;
+  const fits = () => el.scrollWidth <= el.clientWidth;
+  for (const text of [el.dataset.full, el.dataset.full.replace("UGC-креатор", "UGC")]) {
+    el.textContent = text; el.style.fontSize = "";
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    while (!fits() && fs > 11) { fs -= .5; el.style.fontSize = fs + "px"; }
+    if (fits()) return;
+  }
+}
+fitTagline();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTagline);
+window.addEventListener("resize", fitTagline);
 
 /* подсветка раздела в меню и мягкое появление */
 const links = [...document.querySelectorAll(".top nav a")];
