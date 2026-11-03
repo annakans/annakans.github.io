@@ -270,7 +270,7 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
   .top nav a { font-size: 17px; }
   body { font-size: 18px; }
   .tabs { gap: 6px; }
-  .hero .tagline { letter-spacing: .1em; }
+  .hero .tagline { letter-spacing: .06em; }
   .tabs .tab { padding: 9px 12px; font-size: 11px; letter-spacing: .05em; }
 }
 </style>
@@ -517,14 +517,9 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeViewer(
 /* подпись под именем всегда в одну строку: при нехватке места чуть уменьшается */
 function fitTagline() {
   const el = document.querySelector(".hero .tagline");
-  el.dataset.full = el.dataset.full || el.textContent;
-  const fits = () => el.scrollWidth <= el.clientWidth;
-  for (const text of [el.dataset.full, el.dataset.full.replace("UGC-креатор", "UGC")]) {
-    el.textContent = text; el.style.fontSize = "";
-    let fs = parseFloat(getComputedStyle(el).fontSize);
-    while (!fits() && fs > 11) { fs -= .5; el.style.fontSize = fs + "px"; }
-    if (fits()) return;
-  }
+  el.style.fontSize = "";
+  let fs = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollWidth > el.clientWidth && fs > 8) { fs -= .25; el.style.fontSize = fs + "px"; }
 }
 fitTagline();
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTagline);
