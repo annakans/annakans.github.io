@@ -148,7 +148,7 @@ section { position: relative; padding: clamp(64px, 9vw, 120px) var(--gutter); sc
 
 .rail-wrap { position: relative; }
 .rail {
-  display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; justify-content: safe center;
+  display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; justify-content: safe center; align-items: flex-start;
   padding: 6px 4px 22px; scroll-padding-inline: 4px; scrollbar-width: thin;
   scrollbar-color: var(--taupe) transparent; text-align: left;
 }
@@ -174,7 +174,8 @@ section { position: relative; padding: clamp(64px, 9vw, 120px) var(--gutter); sc
   display: grid; place-items: center; box-shadow: 0 6px 18px rgba(0,0,0,.18);
 }
 .play::before { content: ""; margin-left: 4px; border-left: 15px solid var(--choco); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
-.vcard .cap { margin-top: 12px; font-size: 19px; }
+.vcard { display: flex; flex-direction: column; }
+.vcard .cap { margin-top: 12px; font-size: 19px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vcard .cap small { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe); margin-top: 2px; }
 
 /* заглушки до загрузки реальных материалов */
@@ -381,13 +382,13 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
 const PHOTOS = { hero: "", about: "", contact: "" };
 const VIDEOS = {
   "Уход":      [{t:"Утренний уход", s:"обзор"}, {t:"Сыворотка", s:"ASMR"}, {t:"Маски для лица", s:"распаковка"}, {t:"Вечерняя рутина", s:"GRWM"}, {t:"Крем SPF", s:"отзыв"}],
-  "Макияж":    [{t:"Макияж как у Хейли Бибер", s:"повторяю образ", src:"media/makeup-hailey.mp4", poster:"media/makeup-hailey.jpg"},
-                {t:"Мой зимний макияж", s:"туториал", src:"media/makeup-zima.mp4", poster:"media/makeup-zima.jpg"},
-                {t:"Идеальное комбо для тона", s:"ASMR", src:"media/makeup-ton.mp4", poster:"media/makeup-ton.jpg"},
-                {t:"Любимое холодное комбо для губ", s:"губы", src:"media/makeup-guby.mp4", poster:"media/makeup-guby.jpg"},
-                {t:"Проверяю лайфхак с губами", s:"тест лайфхака", src:"media/makeup-layfhak.mp4", poster:"media/makeup-layfhak.jpg"},
+  "Макияж":    [{t:"Макияж Хэйли Бибер", s:"повторяю образ", src:"media/makeup-hailey.mp4", poster:"media/makeup-hailey.jpg"},
+                {t:"Осенний макияж", s:"туториал", src:"media/makeup-zima.mp4", poster:"media/makeup-zima.jpg"},
+                {t:"Комбо для тона", s:"ASMR", src:"media/makeup-ton.mp4", poster:"media/makeup-ton.jpg"},
+                {t:"Холодные губы", s:"губы", src:"media/makeup-guby.mp4", poster:"media/makeup-guby.jpg"},
+                {t:"Лайфхак для губ", s:"тест лайфхака", src:"media/makeup-layfhak.mp4", poster:"media/makeup-layfhak.jpg"},
                 {t:"Хайлайтер под консилер", s:"тест лайфхака", src:"media/makeup-haylayter.mp4", poster:"media/makeup-haylayter.jpg"},
-                {t:"Укладка бровей за минуту", s:"туториал", src:"media/makeup-brovi.mp4", poster:"media/makeup-brovi.jpg"}],
+                {t:"Брови за минуту", s:"туториал", src:"media/makeup-brovi.mp4", poster:"media/makeup-brovi.jpg"}],
   "Волосы":    [{t:"Уход за длиной", s:"обзор"}, {t:"Укладка за 5 минут", s:"туториал"}, {t:"Маска для волос", s:"ASMR"}, {t:"Масло для кончиков", s:"отзыв"}],
   "Лайфстайл": [{t:"Мой день", s:"влог"}, {t:"Бьюти-полка", s:"обзор"}, {t:"Свечи и уют", s:"ASMR"}, {t:"Что в моей сумке", s:"распаковка"}]
 };
