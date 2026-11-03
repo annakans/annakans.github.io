@@ -200,6 +200,7 @@ section > * { position: relative; z-index: 1; }
 .photos .section-title { color: var(--cream); }
 .photos .eyebrow { color: #C9AE8F; }
 .photo-block + .photo-block { margin-top: 56px; }
+.photos .photo-block { margin-top: 34px; }
 .photo-block h3 { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 30px; margin: 26px 0 18px; color: #EBD9B4; }
 .pcard { width: clamp(220px, 26vw, 300px); aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; position: relative; border: 0; padding: 0; cursor: zoom-in; background: none; }
 .pcard img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
@@ -366,19 +367,10 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
         <h2 class="section-title">Фотографии</h2>
       </div>
       <div class="photo-block reveal">
-        <h3>Предметная съёмка</h3>
         <div class="rail-wrap">
           <button class="arrow prev" type="button" aria-label="Листать назад" data-rail="productRail" data-dir="-1">‹</button>
           <div class="rail" id="productRail"></div>
           <button class="arrow next" type="button" aria-label="Листать вперёд" data-rail="productRail" data-dir="1">›</button>
-        </div>
-      </div>
-      <div class="photo-block reveal">
-        <h3>UGC-фото с продуктом</h3>
-        <div class="rail-wrap">
-          <button class="arrow prev" type="button" aria-label="Листать назад" data-rail="ugcRail" data-dir="-1">‹</button>
-          <div class="rail" id="ugcRail"></div>
-          <button class="arrow next" type="button" aria-label="Листать вперёд" data-rail="ugcRail" data-dir="1">›</button>
         </div>
       </div>
     </div>
@@ -443,8 +435,7 @@ const VIDEOS = {
     {t:"Утренняя рутина", s:"влог", src:"media/life-morning.mp4", poster:"media/life-morning.jpg"}
   ]
 };
-const PRODUCT_PHOTOS = ["media/photo-biorepair.jpg", "media/photo-lador.jpg"];
-const UGC_PHOTOS = ["media/photo-rhode.jpg", "media/photo-tomyskin.jpg", "media/photo-sokolov.jpg"];
+const PRODUCT_PHOTOS = ["media/photo-biorepair.jpg", "media/photo-rhode.jpg", "media/photo-lador.jpg", "media/photo-tomyskin.jpg", "media/photo-sokolov.jpg"];
 /* ============================================================== */
 
 const tones = ["tone-1","tone-2","tone-3","tone-4","tone-5"];
@@ -489,7 +480,6 @@ function renderPhotos(id, list, label, offset) {
     </button>`).join("");
 }
 renderPhotos("productRail", PRODUCT_PHOTOS, "фото продукта", 0);
-renderPhotos("ugcRail", UGC_PHOTOS, "фото с продуктом", 2);
 
 /* стрелки лент */
 document.querySelectorAll(".arrow").forEach(btn => btn.addEventListener("click", () => {
