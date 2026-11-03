@@ -241,7 +241,7 @@ section > * { position: relative; z-index: 1; }
 .contact .lines a, .contact .lines span { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
 .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--choco); color: var(--cream); display: grid; place-items: center; flex: none; }
 .dot svg { width: 15px; height: 15px; }
-.contact .portrait { border-radius: var(--radius); aspect-ratio: 4/5; }
+.contact .portrait { border-radius: var(--radius); aspect-ratio: 2/3; max-height: 640px; margin: 0 auto; }
 footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter) 40px; color: var(--taupe); }
 
 /* ---------- просмотр ---------- */
@@ -448,7 +448,7 @@ function fillPhoto(id, src, i, pos) {
   el.innerHTML = src ? `<img src="${src}" alt="Anna Kans" style="width:100%;height:100%;object-fit:cover;object-position:${pos || "50% 30%"}">` : `<div style="position:relative;width:100%;height:100%">${placeholder(i, "ваше фото")}</div>`;
 }
 fillPhoto("heroPhoto", PHOTOS.hero, 0, "50% 35%");
-fillPhoto("contactPhoto", PHOTOS.contact, 1, "40% 55%");
+fillPhoto("contactPhoto", PHOTOS.contact, 1, "50% 50%");
 
 /* вкладки портфолио */
 const tabsEl = document.getElementById("tabs");
