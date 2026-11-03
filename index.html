@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anna Kans — UGC-портфолио</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marck+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root {
+  /* Ванильный фон, шоколадный акцент, длинная страница с плавными переходами между секциями */
+  --vanilla: #F4E7BC;
+  --cream: #FBF4DF;
+  --butter: #EED98F;
+  --choco: #3B1A1D;
+  --choco-soft: #6A3B37;
+  --taupe: #9B7F68;
+  --script: "Great Vibes", "Marck Script", cursive;
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --radius: 22px;
+  --gutter: clamp(18px, 5vw, 72px);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--choco);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--choco-soft); outline-offset: 3px; }
+
+.script { font-family: var(--script); font-weight: 400; line-height: 1; }
+.caps {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: 13px;
+  font-weight: 400;
+}
+h1, h2 { margin: 0; font-weight: 400; text-wrap: balance; }
+
+/* ---------- шапка ---------- */
+.top {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 14px var(--gutter);
+  background: color-mix(in srgb, var(--cream) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid color-mix(in srgb, var(--choco) 10%, transparent);
+}
+.top .logo { font-size: 34px; text-decoration: none; color: var(--choco); }
+.top nav { display: flex; gap: clamp(14px, 2.4vw, 34px); overflow-x: auto; scrollbar-width: none; }
+.top nav::-webkit-scrollbar { display: none; }
+.top nav a { text-decoration: none; white-space: nowrap; color: var(--choco-soft); padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color .3s, color .3s; }
+.top nav a:hover, .top nav a.active { color: var(--choco); border-bottom-color: var(--choco); }
+
+section { position: relative; padding: clamp(64px, 9vw, 120px) var(--gutter); scroll-margin-top: 60px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+
+/* мягкие переходы между секциями */
+.fade-to-vanilla::after, .fade-to-cream::after, .fade-to-choco::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; pointer-events: none;
+}
+.fade-to-vanilla::after { background: linear-gradient(to bottom, transparent, var(--vanilla)); }
+.fade-to-cream::after { background: linear-gradient(to bottom, transparent, var(--cream)); }
+.fade-to-choco::after { background: linear-gradient(to bottom, transparent, var(--choco)); }
+
+/* ---------- обложка ---------- */
+.hero { background: linear-gradient(170deg, var(--cream) 0%, var(--vanilla) 100%); padding-top: clamp(40px, 6vw, 80px); }
+.hero .wrap { display: grid; grid-template-columns: minmax(240px, 5fr) 7fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.portrait { aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius); overflow: hidden; box-shadow: 0 30px 60px -30px rgba(59,26,29,.45); }
+.hero h1 { font-family: var(--script); font-size: clamp(78px, 11vw, 150px); line-height: .95; color: var(--choco); }
+.hero .tagline { margin: 22px 0 32px; color: var(--choco-soft); line-height: 2; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 24px; border-radius: 999px;
+  background: var(--choco); color: var(--cream);
+  font-family: var(--sans); font-size: 14px; letter-spacing: .08em; text-decoration: none;
+  border: 1px solid var(--choco); cursor: pointer; transition: transform .25s, background .25s, color .25s;
+}
+.pill:hover { transform: translateY(-2px); }
+.pill.ghost { background: transparent; color: var(--choco); }
+.pill svg { width: 16px; height: 16px; }
+
+/* ---------- соцсети ---------- */
+.socials {
+  display: inline-flex; align-items: center; gap: 14px; margin-top: 18px;
+  padding: 8px 10px 8px 20px; border-radius: 999px;
+  background: var(--cream); border: 1px solid color-mix(in srgb, var(--choco) 18%, transparent);
+}
+.socials .caps { margin: 0; font-size: 12px; color: var(--taupe); letter-spacing: .18em; }
+.socials a {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--choco); color: var(--cream); transition: transform .25s;
+}
+.socials a:hover { transform: translateY(-2px); }
+.socials svg { width: 18px; height: 18px; }
+
+/* ---------- обо мне ---------- */
+.about { background: var(--vanilla); }
+.letter {
+  max-width: 980px; margin: 0 auto;
+  display: grid; grid-template-columns: 300px 1fr; gap: clamp(28px, 5vw, 64px); align-items: center;
+  background: var(--cream); border-radius: var(--radius); padding: clamp(24px, 4vw, 48px);
+  box-shadow: 0 24px 50px -34px rgba(59,26,29,.4);
+}
+.letter .photo { aspect-ratio: 3/4; border-radius: 16px; overflow: hidden; }
+.letter h2 { font-family: var(--script); font-size: clamp(54px, 7vw, 84px); color: var(--choco); margin-bottom: 14px; }
+.letter p { margin: 0 0 14px; max-width: 60ch; }
+.sign { display: flex; align-items: baseline; gap: 14px; margin-top: 10px; color: var(--choco-soft); font-style: italic; }
+.sign .script { font-size: 52px; color: var(--choco); font-style: normal; }
+
+/* ---------- форматы / бренды ---------- */
+.formats { background: var(--vanilla); text-align: center; }
+.section-title { font-family: var(--script); font-size: clamp(56px, 8vw, 96px); color: var(--choco); }
+.eyebrow { color: var(--taupe); margin-bottom: 6px; }
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; margin: 34px auto 0; }
+.chip {
+  font-family: var(--sans); font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 12px 22px; border-radius: 999px; background: var(--butter); color: var(--choco);
+}
+
+/* ---------- портфолио ---------- */
+.portfolio { background: var(--cream); text-align: center; }
+.tabs { display: flex; flex-wrap: nowrap; justify-content: safe center; gap: 10px; margin: 28px 0 36px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  font-family: var(--sans); font-size: 14px; letter-spacing: .14em; text-transform: uppercase;
+  padding: 12px 24px; border-radius: 999px; cursor: pointer; white-space: nowrap; flex: none;
+  background: transparent; color: var(--choco); border: 1px solid var(--choco);
+  transition: background .3s, color .3s;
+}
+.tab[aria-selected="true"] { background: var(--choco); color: var(--cream); }
+.tab:hover { background: color-mix(in srgb, var(--choco) 12%, transparent); }
+.tab[aria-selected="true"]:hover { background: var(--choco); }
+
+.rail-wrap { position: relative; }
+.rail {
+  display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 6px 4px 22px; scroll-padding-inline: 4px; scrollbar-width: thin;
+  scrollbar-color: var(--taupe) transparent; text-align: left;
+}
+.rail > * { scroll-snap-align: start; flex: 0 0 auto; }
+.arrow {
+  position: absolute; top: 42%; z-index: 2; width: 46px; height: 46px; border-radius: 50%;
+  border: none; background: var(--cream); color: var(--choco); cursor: pointer;
+  box-shadow: 0 8px 20px -8px rgba(59,26,29,.5); display: grid; place-items: center; font-size: 22px;
+}
+.arrow.prev { left: -14px; } .arrow.next { right: -14px; }
+.photos .arrow { background: var(--vanilla); }
+
+.vcard { width: clamp(200px, 23vw, 250px); border: 0; padding: 0; background: none; cursor: pointer; text-align: left; }
+.vcard .frame {
+  position: relative; aspect-ratio: 9 / 16; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 18px 36px -24px rgba(59,26,29,.55); transition: transform .35s;
+}
+.vcard:hover .frame { transform: translateY(-4px); }
+.vcard video { width: 100%; height: 100%; object-fit: cover; }
+.play {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  width: 58px; height: 58px; border-radius: 50%; background: rgba(251,244,223,.92);
+  display: grid; place-items: center; box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+.play::before { content: ""; margin-left: 4px; border-left: 15px solid var(--choco); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+.vcard .cap { margin-top: 12px; font-size: 19px; }
+.vcard .cap small { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe); margin-top: 2px; }
+
+/* заглушки до загрузки реальных материалов */
+.ph { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 16px; }
+.ph span { font-family: var(--sans); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(59,26,29,.65); background: rgba(251,244,223,.75); padding: 6px 10px; border-radius: 999px; }
+.tone-1 { background: radial-gradient(120% 80% at 30% 20%, #F7E9C6 0%, #E5C9A4 55%, #B98C72 100%); }
+.tone-2 { background: radial-gradient(120% 80% at 70% 25%, #FBEFD8 0%, #E8C7B0 50%, #A8726A 100%); }
+.tone-3 { background: radial-gradient(120% 90% at 40% 70%, #F3E3B5 0%, #D9B98C 55%, #8E6450 100%); }
+.tone-4 { background: radial-gradient(110% 80% at 60% 40%, #FFF6E2 0%, #EAD3B4 50%, #C29A7E 100%); }
+.tone-5 { background: radial-gradient(120% 80% at 20% 80%, #F6E1C8 0%, #DDB49A 55%, #93625A 100%); }
+
+/* ---------- фото ---------- */
+.photos { background: var(--choco); color: var(--cream); text-align: center; }
+.photos .section-title { color: var(--cream); }
+.photos .eyebrow { color: #C9AE8F; }
+.photo-block + .photo-block { margin-top: 56px; }
+.photo-block h3 { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 30px; margin: 26px 0 18px; color: #EBD9B4; }
+.pcard { width: clamp(220px, 26vw, 300px); aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; position: relative; border: 0; padding: 0; cursor: zoom-in; background: none; }
+.pcard img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.pcard:hover img { transform: scale(1.04); }
+.photos .ph span { background: rgba(59,26,29,.55); color: #F4E7BC; }
+
+/* ---------- контакты ---------- */
+.contact { background: var(--vanilla); }
+.contact .wrap {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center;
+  background: var(--cream); border-radius: var(--radius); padding: clamp(28px, 5vw, 64px);
+}
+.contact h2 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 56px); line-height: 1.12; margin: 10px 0 30px; }
+.contact .lines { display: grid; gap: 14px; font-family: var(--sans); font-size: 20px; }
+.contact .tg { border-bottom: 1px solid transparent; width: fit-content; transition: border-color .3s; }
+.contact .tg:hover { border-bottom-color: var(--choco); }
+.contact .lines a, .contact .lines span { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+.dot { width: 34px; height: 34px; border-radius: 50%; background: var(--choco); color: var(--cream); display: grid; place-items: center; flex: none; }
+.dot svg { width: 15px; height: 15px; }
+.contact .portrait { border-radius: var(--radius); aspect-ratio: 4/5; }
+footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter) 40px; color: var(--taupe); }
+
+/* ---------- просмотр ---------- */
+.viewer { position: fixed; inset: 0; z-index: 50; background: rgba(30,12,14,.86); display: none; place-items: center; padding: 24px; }
+.viewer.open { display: grid; }
+.viewer .box { max-width: min(92vw, 460px); max-height: 88vh; }
+.viewer.photo .box { max-width: min(92vw, 900px); }
+.viewer video, .viewer img { max-height: 88vh; border-radius: 16px; margin: 0 auto; }
+.viewer .close { position: absolute; top: 16px; right: 18px; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--cream); font-size: 24px; cursor: pointer; }
+
+/* появление при прокрутке: элементы видимы сразу, только мягко «доезжают» */
+.reveal { transform: translateY(18px); transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { transform: none; transition: none; }
+}
+
+@media (max-width: 820px) {
+  .hero .wrap, .letter, .contact .wrap { grid-template-columns: 1fr; }
+  .hero .wrap { text-align: center; }
+  .hero .portrait { max-width: 330px; margin: 0 auto; }
+  .btns { justify-content: center; }
+  .letter .photo { max-width: 300px; }
+  .arrow { display: none; }
+  .top .logo { font-size: 28px; }
+  .top nav a { font-size: 17px; }
+  body { font-size: 18px; }
+  .tabs { gap: 6px; }
+  .tabs .tab { padding: 9px 12px; font-size: 11px; letter-spacing: .05em; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="logo script" href="#home">Anna Kans</a>
+  <nav aria-label="Разделы">
+    <a href="#about">Обо мне</a>
+    <a href="#formats">Форматы</a>
+    <a href="#portfolio">Портфолио</a>
+    <a href="#photos">Фото</a>
+    <a href="#contact">Связь</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero fade-to-vanilla" id="home">
+    <div class="wrap">
+      <div class="portrait reveal" id="heroPhoto"></div>
+      <div class="reveal">
+        <h1>Anna Kans</h1>
+        <div class="caps tagline">UGC-креатор &nbsp;·&nbsp; бьюти и лайфстайл &nbsp;·&nbsp; Екатеринбург</div>
+        <div class="btns">
+          <a class="pill" href="https://t.me/anna_kans">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg>
+            Написать мне
+          </a>
+        </div>
+        <div class="socials" aria-label="Мои соцсети">
+          <span class="caps">мои соцсети</span>
+          <a href="https://instagram.com/anyakans" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="https://youtube.com/@anna_kans?si=GHYyXqBNsNeXXljr" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9.5 5 2.5-5 2.5z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://t.me/kansspace" aria-label="Telegram-канал">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="letter reveal">
+      <div class="photo" id="aboutPhoto"></div>
+      <div>
+        <h2>Привет, бренды!</h2>
+        <p>Я Аня, создаю живой UGC-контент для бьюти- и лайфстайл-брендов: обзоры, распаковки, ASMR, туториалы и эстетичные фото продуктов.</p>
+        <p>Снимаю спокойно, тепло и честно, так что зрителю хочется досмотреть до конца и попробовать продукт самому.</p>
+        <div class="sign">с любовью, <span class="script">Аня</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="formats fade-to-cream" id="formats">
+    <div class="wrap reveal">
+      <div class="caps eyebrow">что я снимаю</div>
+      <h2 class="section-title">Форматы</h2>
+      <div class="chips">
+        <span class="chip">Распаковка</span>
+        <span class="chip">Обзор продукта</span>
+        <span class="chip">ASMR</span>
+        <span class="chip">Туториал</span>
+        <span class="chip">GRWM</span>
+        <span class="chip">До и после</span>
+        <span class="chip">Отзыв на камеру</span>
+        <span class="chip">Предметное фото</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio fade-to-choco" id="portfolio">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="caps eyebrow">мои работы</div>
+        <h2 class="section-title">Портфолио</h2>
+      </div>
+      <div class="tabs reveal" role="tablist" aria-label="Категории видео" id="tabs"></div>
+      <div class="rail-wrap reveal">
+        <button class="arrow prev" type="button" aria-label="Листать назад" data-rail="videoRail" data-dir="-1">‹</button>
+        <div class="rail" id="videoRail" role="tabpanel"></div>
+        <button class="arrow next" type="button" aria-label="Листать вперёд" data-rail="videoRail" data-dir="1">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="photos fade-to-vanilla" id="photos">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="caps eyebrow">эстетика продукта</div>
+        <h2 class="section-title">Фотографии</h2>
+      </div>
+      <div class="photo-block reveal">
+        <h3>Предметная съёмка</h3>
+        <div class="rail-wrap">
+          <button class="arrow prev" type="button" aria-label="Листать назад" data-rail="productRail" data-dir="-1">‹</button>
+          <div class="rail" id="productRail"></div>
+          <button class="arrow next" type="button" aria-label="Листать вперёд" data-rail="productRail" data-dir="1">›</button>
+        </div>
+      </div>
+      <div class="photo-block reveal">
+        <h3>UGC-фото с продуктом</h3>
+        <div class="rail-wrap">
+          <button class="arrow prev" type="button" aria-label="Листать назад" data-rail="ugcRail" data-dir="-1">‹</button>
+          <div class="rail" id="ugcRail"></div>
+          <button class="arrow next" type="button" aria-label="Листать вперёд" data-rail="ugcRail" data-dir="1">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap reveal">
+      <div>
+        <div class="caps eyebrow">связь</div>
+        <h2>Давайте снимем контент, который ваша аудитория захочет досмотреть.</h2>
+        <div class="lines">
+          <a class="tg" href="https://t.me/anna_kans"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg></span>@anna_kans</a>
+        </div>
+      </div>
+      <div class="portrait" id="contactPhoto"></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="caps">© Anna Kans · UGC-креатор</div></footer>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Просмотр">
+  <button class="close" type="button" aria-label="Закрыть">×</button>
+  <div class="box" id="viewerBox"></div>
+</div>
+
+<script>
+/* ===== Материалы сайта: сюда подставляются реальные файлы ===== */
+const PHOTOS = { hero: "", about: "", contact: "" };
+const VIDEOS = {
+  "Уход":      [{t:"Утренний уход", s:"обзор"}, {t:"Сыворотка", s:"ASMR"}, {t:"Маски для лица", s:"распаковка"}, {t:"Вечерняя рутина", s:"GRWM"}, {t:"Крем SPF", s:"отзыв"}],
+  "Макияж":    [{t:"Дневной макияж", s:"туториал"}, {t:"Новые помады", s:"свотчи"}, {t:"Тональный крем", s:"до и после"}, {t:"Палетка теней", s:"распаковка"}],
+  "Волосы":    [{t:"Уход за длиной", s:"обзор"}, {t:"Укладка за 5 минут", s:"туториал"}, {t:"Маска для волос", s:"ASMR"}, {t:"Масло для кончиков", s:"отзыв"}],
+  "Лайфстайл": [{t:"Мой день", s:"влог"}, {t:"Бьюти-полка", s:"обзор"}, {t:"Свечи и уют", s:"ASMR"}, {t:"Что в моей сумке", s:"распаковка"}]
+};
+const PRODUCT_PHOTOS = Array.from({length: 6}, () => "");
+const UGC_PHOTOS = Array.from({length: 5}, () => "");
+/* ============================================================== */
+
+const tones = ["tone-1","tone-2","tone-3","tone-4","tone-5"];
+function placeholder(i, label) {
+  return `<div class="ph ${tones[i % tones.length]}"><span>${label}</span></div>`;
+}
+function fillPhoto(id, src, i) {
+  const el = document.getElementById(id);
+  el.innerHTML = src ? `<img src="${src}" alt="Anna Kans" style="width:100%;height:100%;object-fit:cover">` : `<div style="position:relative;width:100%;height:100%">${placeholder(i, "ваше фото")}</div>`;
+}
+fillPhoto("heroPhoto", PHOTOS.hero, 0);
+fillPhoto("aboutPhoto", PHOTOS.about, 3);
+fillPhoto("contactPhoto", PHOTOS.contact, 1);
+
+/* вкладки портфолио */
+const tabsEl = document.getElementById("tabs");
+const rail = document.getElementById("videoRail");
+const cats = Object.keys(VIDEOS);
+function renderCat(cat) {
+  rail.innerHTML = VIDEOS[cat].map((v, i) => `
+    <button class="vcard" type="button" data-src="${v.src || ""}" aria-label="${v.t}">
+      <div class="frame">
+        ${v.src ? `<video src="${v.src}#t=0.1" muted playsinline preload="metadata"></video>` : placeholder(i + cat.length, "видео")}
+        <div class="play"></div>
+      </div>
+      <div class="cap">${v.t}<small>${v.s}</small></div>
+    </button>`).join("");
+  rail.scrollLeft = 0;
+  [...tabsEl.children].forEach(b => b.setAttribute("aria-selected", b.dataset.cat === cat));
+  try { localStorage.setItem("ak-tab", cat); } catch (e) {}
+}
+tabsEl.innerHTML = cats.map(c => `<button class="tab" role="tab" type="button" data-cat="${c}">${c}</button>`).join("");
+tabsEl.addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) renderCat(b.dataset.cat); });
+let startCat = cats[0];
+try { const saved = localStorage.getItem("ak-tab"); if (saved && VIDEOS[saved]) startCat = saved; } catch (e) {}
+renderCat(startCat);
+
+/* фото-ленты */
+function renderPhotos(id, list, label, offset) {
+  document.getElementById(id).innerHTML = list.map((src, i) => `
+    <button class="pcard" type="button" data-img="${src}" aria-label="Открыть фото">
+      ${src ? `<img src="${src}" alt="" loading="lazy">` : placeholder(i + offset, label)}
+    </button>`).join("");
+}
+renderPhotos("productRail", PRODUCT_PHOTOS, "фото продукта", 0);
+renderPhotos("ugcRail", UGC_PHOTOS, "фото с продуктом", 2);
+
+/* стрелки лент */
+document.querySelectorAll(".arrow").forEach(btn => btn.addEventListener("click", () => {
+  const r = document.getElementById(btn.dataset.rail);
+  r.scrollBy({ left: btn.dataset.dir * r.clientWidth * 0.8, behavior: "smooth" });
+}));
+
+/* просмотр видео и фото */
+const viewer = document.getElementById("viewer"), box = document.getElementById("viewerBox");
+function openViewer(html, isPhoto) { box.innerHTML = html; viewer.classList.toggle("photo", isPhoto); viewer.classList.add("open"); }
+function closeViewer() { viewer.classList.remove("open"); box.innerHTML = ""; }
+document.addEventListener("click", e => {
+  const v = e.target.closest(".vcard");
+  if (v && v.dataset.src) openViewer(`<video src="${v.dataset.src}" controls autoplay playsinline></video>`, false);
+  const p = e.target.closest(".pcard");
+  if (p && p.dataset.img) openViewer(`<img src="${p.dataset.img}" alt="">`, true);
+});
+viewer.addEventListener("click", e => { if (e.target === viewer || e.target.closest(".close")) closeViewer(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeViewer(); });
+
+/* подсветка раздела в меню и мягкое появление */
+const links = [...document.querySelectorAll(".top nav a")];
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) en.target.classList.add("in"); }), { threshold: .15 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  const so = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main section").forEach(s => so.observe(s));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+}
+</script>
+</body>
+</html>
