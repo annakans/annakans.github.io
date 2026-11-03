@@ -67,6 +67,8 @@ h1, h2 { margin: 0; font-weight: 400; text-wrap: balance; }
 
 section { position: relative; padding: clamp(64px, 9vw, 120px) var(--gutter); scroll-margin-top: 60px; }
 .wrap { max-width: 1180px; margin: 0 auto; }
+section > * { position: relative; z-index: 1; }
+.fade-to-vanilla, .fade-to-cream, .fade-to-choco { padding-bottom: clamp(130px, 14vw, 180px); }
 
 /* мягкие переходы между секциями */
 .fade-to-vanilla::after, .fade-to-cream::after, .fade-to-choco::after {
@@ -123,7 +125,9 @@ section { position: relative; padding: clamp(64px, 9vw, 120px) var(--gutter); sc
 .sign .script { font-size: 52px; color: var(--choco); font-style: normal; }
 
 /* ---------- форматы / бренды ---------- */
-.formats { background: var(--vanilla); text-align: center; }
+.formats { background: var(--choco); color: var(--cream); text-align: center; }
+.formats .section-title { color: var(--cream); }
+.formats .eyebrow { color: #C9AE8F; }
 .section-title { font-family: var(--script); font-size: clamp(56px, 8vw, 96px); color: var(--choco); }
 .eyebrow { color: var(--taupe); margin-bottom: 6px; }
 .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; margin: 34px auto 0; }
@@ -287,7 +291,7 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
     </div>
   </section>
 
-  <section class="about" id="about">
+  <section class="about fade-to-choco" id="about">
     <div class="letter reveal">
       <div class="photo" id="aboutPhoto"></div>
       <div>
@@ -381,18 +385,24 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
 /* ===== Материалы сайта: сюда подставляются реальные файлы ===== */
 const PHOTOS = { hero: "", about: "", contact: "" };
 const VIDEOS = {
-  "Уход":      [{t:"Утренний уход", s:"обзор"}, {t:"Сыворотка", s:"ASMR"}, {t:"Маски для лица", s:"распаковка"}, {t:"Вечерняя рутина", s:"GRWM"}, {t:"Крем SPF", s:"отзыв"}],
-  "Макияж":    [{t:"Макияж Хэйли Бибер", s:"повторяю образ", src:"media/makeup-hailey.mp4", poster:"media/makeup-hailey.jpg"},
-                {t:"Холодный vs тёплый", s:"сравнение", src:"media/makeup-cold-warm.mp4", poster:"media/makeup-cold-warm.jpg"},
-                {t:"Осенний макияж", s:"туториал", src:"media/makeup-zima.mp4", poster:"media/makeup-zima.jpg"},
-                {t:"Собирайся со мной", s:"GRWM", src:"media/makeup-grwm.mp4", poster:"media/makeup-grwm.jpg"},
-                {t:"Комбо для тона", s:"ASMR", src:"media/makeup-ton.mp4", poster:"media/makeup-ton.jpg"},
-                {t:"Холодные губы", s:"губы", src:"media/makeup-guby.mp4", poster:"media/makeup-guby.jpg"},
-                {t:"Лайфхак для губ", s:"тест лайфхака", src:"media/makeup-layfhak.mp4", poster:"media/makeup-layfhak.jpg"},
-                {t:"Хайлайтер под консилер", s:"тест лайфхака", src:"media/makeup-haylayter.mp4", poster:"media/makeup-haylayter.jpg"},
-                {t:"Брови за минуту", s:"туториал", src:"media/makeup-brovi.mp4", poster:"media/makeup-brovi.jpg"}],
-  "Волосы":    [{t:"Уход за длиной", s:"обзор"}, {t:"Укладка за 5 минут", s:"туториал"}, {t:"Маска для волос", s:"ASMR"}, {t:"Масло для кончиков", s:"отзыв"}],
-  "Лайфстайл": [{t:"Мой день", s:"влог"}, {t:"Бьюти-полка", s:"обзор"}, {t:"Свечи и уют", s:"ASMR"}, {t:"Что в моей сумке", s:"распаковка"}]
+  "Макияж": [
+    {t:"Макияж Хэйли Бибер", s:"повторяю образ", src:"media/makeup-hailey.mp4", poster:"media/makeup-hailey.jpg"},
+    {t:"Одна палетка, два образа", s:"обзор", src:"media/makeup-palette.mp4", poster:"media/makeup-palette.jpg"},
+    {t:"Тестирую спонж", s:"распаковка", src:"media/makeup-sponge.mp4", poster:"media/makeup-sponge.jpg"},
+    {t:"Хайлайтер под консилер", s:"лайфхак", src:"media/makeup-haylayter.mp4", poster:"media/makeup-haylayter.jpg"},
+    {t:"Комбо для тона", s:"ASMR", src:"media/makeup-ton.mp4", poster:"media/makeup-ton.jpg"}
+  ],
+  "Уход": [
+    {t:"Уходовая рутина", s:"рутина", src:"media/care-routine.mp4", poster:"media/care-routine.jpg"},
+    {t:"Утренний глоу-ап", s:"утро", src:"media/care-glowup.mp4", poster:"media/care-glowup.jpg"},
+    {t:"О нашей коже", s:"рассказываю", src:"media/care-skin.mp4", poster:"media/care-skin.jpg"}
+  ],
+  "Лайфстайл": [
+    {t:"Утренняя рутина", s:"влог", src:"media/life-morning.mp4", poster:"media/life-morning.jpg"},
+    {t:"Собирайся со мной", s:"GRWM", src:"media/life-grwm.mp4", poster:"media/life-grwm.jpg"},
+    {t:"Образ по погоде", s:"образы", src:"media/life-outfit.mp4", poster:"media/life-outfit.jpg"},
+    {t:"Преображение за час", s:"трансформация", src:"media/life-hour.mp4", poster:"media/life-hour.jpg"}
+  ]
 };
 const PRODUCT_PHOTOS = Array.from({length: 6}, () => "");
 const UGC_PHOTOS = Array.from({length: 5}, () => "");
