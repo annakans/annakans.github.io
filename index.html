@@ -232,8 +232,9 @@ section > * { position: relative; z-index: 1; }
 }
 .contact h2 { font-family: var(--serif); font-size: clamp(34px, 4.4vw, 56px); line-height: 1.12; margin: 10px 0 30px; }
 .contact .lines { display: grid; gap: 14px; font-family: var(--sans); font-size: 20px; }
-.contact .tg { border-bottom: 1px solid transparent; width: fit-content; transition: border-color .3s; }
-.contact .tg:hover { border-bottom-color: var(--choco); }
+.contact .tg { width: fit-content; }
+.contact .tg .handle { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; text-decoration-color: rgba(59,26,29,.35); transition: text-decoration-color .3s; }
+.contact .tg:hover .handle { text-decoration-color: var(--choco); }
 .contact .lines a, .contact .lines span { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
 .dot { width: 34px; height: 34px; border-radius: 50%; background: var(--choco); color: var(--cream); display: grid; place-items: center; flex: none; }
 .dot svg { width: 15px; height: 15px; }
@@ -403,7 +404,7 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
         <div class="caps eyebrow">связь</div>
         <h2>Давайте снимем контент, который ваша аудитория захочет досмотреть.</h2>
         <div class="lines">
-          <a class="tg" href="https://t.me/anna_kans"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg></span>@anna_kans</a>
+          <a class="tg" href="https://t.me/anna_kans"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg></span><span class="handle">@anna_kans</span></a>
         </div>
       </div>
       <div class="portrait" id="contactPhoto"></div>
