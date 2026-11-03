@@ -148,7 +148,7 @@ section { position: relative; padding: clamp(64px, 9vw, 120px) var(--gutter); sc
 
 .rail-wrap { position: relative; }
 .rail {
-  display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+  display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; justify-content: safe center;
   padding: 6px 4px 22px; scroll-padding-inline: 4px; scrollbar-width: thin;
   scrollbar-color: var(--taupe) transparent; text-align: left;
 }
@@ -381,7 +381,8 @@ footer { background: var(--vanilla); text-align: center; padding: 0 var(--gutter
 const PHOTOS = { hero: "", about: "", contact: "" };
 const VIDEOS = {
   "Уход":      [{t:"Утренний уход", s:"обзор"}, {t:"Сыворотка", s:"ASMR"}, {t:"Маски для лица", s:"распаковка"}, {t:"Вечерняя рутина", s:"GRWM"}, {t:"Крем SPF", s:"отзыв"}],
-  "Макияж":    [{t:"Дневной макияж", s:"туториал"}, {t:"Новые помады", s:"свотчи"}, {t:"Тональный крем", s:"до и после"}, {t:"Палетка теней", s:"распаковка"}],
+  "Макияж":    [{t:"Идеальное комбо для тона", s:"ASMR", src:"media/makeup-ton.mp4", poster:"media/makeup-ton.jpg"},
+                {t:"Укладка бровей за минуту", s:"туториал", src:"media/makeup-brovi.mp4", poster:"media/makeup-brovi.jpg"}],
   "Волосы":    [{t:"Уход за длиной", s:"обзор"}, {t:"Укладка за 5 минут", s:"туториал"}, {t:"Маска для волос", s:"ASMR"}, {t:"Масло для кончиков", s:"отзыв"}],
   "Лайфстайл": [{t:"Мой день", s:"влог"}, {t:"Бьюти-полка", s:"обзор"}, {t:"Свечи и уют", s:"ASMR"}, {t:"Что в моей сумке", s:"распаковка"}]
 };
@@ -409,7 +410,7 @@ function renderCat(cat) {
   rail.innerHTML = VIDEOS[cat].map((v, i) => `
     <button class="vcard" type="button" data-src="${v.src || ""}" aria-label="${v.t}">
       <div class="frame">
-        ${v.src ? `<video src="${v.src}#t=0.1" muted playsinline preload="metadata"></video>` : placeholder(i + cat.length, "видео")}
+        ${v.src ? `<video src="${v.src}#t=0.1" ${v.poster ? `poster="${v.poster}"` : ""} muted playsinline preload="none"></video>` : placeholder(i + cat.length, "видео")}
         <div class="play"></div>
       </div>
       <div class="cap">${v.t}<small>${v.s}</small></div>
